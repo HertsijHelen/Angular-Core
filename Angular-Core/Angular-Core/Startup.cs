@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using AngularCore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Angular_Core
 {
@@ -11,6 +13,9 @@ namespace Angular_Core
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = "Server=(localdb)\\MSSQLLocalDb;Database=productsdb;Trusted_Connection=True;";
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,7 +32,7 @@ namespace Angular_Core
             }
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
+            app.UseMvc();
         }
     }
 }
