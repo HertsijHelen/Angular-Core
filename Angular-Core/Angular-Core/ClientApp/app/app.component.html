@@ -14,7 +14,7 @@
             <ng-template [ngIf]="product?.id != p.id" [ngIfElse]="edit">
                 <td>{{p?.name}}</td>
                 <td>{{p?.company}}</td>
-                <td>{{p?.price}}</td>
+                <!--<td>{{p?.price}}</td>-->
                 <td>
                     <button class="btn btn-sm btn-primary" (click)="editProduct(p)">Изменить</button>
                     <button class="btn btn-sm btn-danger" (click)="delete(p)">Удалить</button>
@@ -32,9 +32,9 @@
     <td>
         <input type="text" [(ngModel)]="product.company" class="form-control" />
     </td>
-    <td>
+    <!--<td>
         <input type="text" [(ngModel)]="product.price" class="form-control" />
-    </td>
+    </td>-->
     <td>
         <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
         <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning" />
@@ -51,10 +51,10 @@
         <label>Производитель</label>
         <input type="text" [(ngModel)]="product.company" class="form-control" />
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
         <label>Цена</label>
         <input type="text" [(ngModel)]="product.price" class="form-control" />
-    </div>
+    </div>-->
     <div>
         <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
         <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />

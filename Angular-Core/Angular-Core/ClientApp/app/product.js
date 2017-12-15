@@ -1,9 +1,8 @@
 var Product = (function () {
-    function Product(id, name, company, price) {
+    function Product(id, name, company) {
         this.id = id;
         this.name = name;
         this.company = company;
-        this.price = price;
     }
     return Product;
 }());
