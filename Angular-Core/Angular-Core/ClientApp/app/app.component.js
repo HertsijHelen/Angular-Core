@@ -15,6 +15,8 @@ var AppComponent = (function () {
         this.dataService = dataService;
         this.product = new Product(); // изменяемый товар
         this.tableMode = true; // табличный режим
+        this.curPage = 1;
+        this.pageSize = 3; // any page size you want 
     }
     AppComponent.prototype.ngOnInit = function () {
         this.loadProducts();
@@ -52,6 +54,10 @@ var AppComponent = (function () {
         this.cancel();
         this.tableMode = false;
     };
+    AppComponent.prototype.numberOfPages = function () {
+        return Math.ceil(this.products.length / this.pageSize);
+    };
+    ;
     return AppComponent;
 }());
 AppComponent = __decorate([

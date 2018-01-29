@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of products|SearchPipe:search">
+        <tr *ngFor="let p of products|SearchPipe:search|slice:(curPage*pageSize)-pageSize:curPage*pageSize">
             <ng-template [ngIf]="product?.id != p.id" [ngIfElse]="edit">
                 <td>{{p?.name}}</td>
                 <td>{{p?.company}}</td>
@@ -30,6 +30,14 @@
     </tbody>
 </table>
 
+<p class="pagination">
+    <button [disabled]="curPage == 1" (click)="curPage = curPage - 1">PREV</button>
+    <span>Page {{curPage}} of {{ numberOfPages() }}</span>
+    <button [disabled]="curPage >= products.length/pageSize"
+            (click)="curPage = curPage + 1">
+        NEXT
+    </button>
+</p>
 <!--шаблон для редактирования-->
 <ng-template #edit>
     <td>

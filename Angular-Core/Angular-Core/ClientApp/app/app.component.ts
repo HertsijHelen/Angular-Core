@@ -13,7 +13,14 @@ export class AppComponent implements OnInit{
     products: Product[];                // массив товаров
     tableMode: boolean = true;          // табличный режим
 
-    constructor(private dataService: DataService) { }
+    curPage: number;
+    pageSize: number;
+
+    constructor(private dataService: DataService) {
+        this.curPage = 1;
+        this.pageSize = 3; // any page size you want 
+
+    }
 
     ngOnInit() {
         this.loadProducts();
@@ -53,4 +60,10 @@ export class AppComponent implements OnInit{
         this.cancel();
         this.tableMode = false;
     }
+
+    numberOfPages() {
+        return Math.ceil(this.products.length / this.pageSize);
+    };
+
+
 }

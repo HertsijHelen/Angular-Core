@@ -9,21 +9,15 @@ var SearchPipe = (function () {
     function SearchPipe() {
     }
     SearchPipe.prototype.transform = function (value, search) {
-        var getvalue;
         if (search) {
             search = search.toLowerCase();
             console.log(search);
             return value.filter(function (el) {
-                console.log(el);
-                if (el.company.toLowerCase().indexOf(search) > -1) {
-                    getvalue = el;
-                    console.log(getvalue);
-                }
-                ;
+                return el.company.toLowerCase().indexOf(search) > -1;
             });
         }
-        console.log(getvalue);
-        return getvalue;
+        console.log(value);
+        return value;
     };
     return SearchPipe;
 }());
