@@ -1,16 +1,22 @@
 ﻿<h1>Список моделей</h1>
 <input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+
+<div class="input-group">
+    <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+    <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="search">
+</div>
+
 <table *ngIf="tableMode; else create" class="table table-striped">
     <thead>
         <tr>
             <td>Модель</td>
             <td>Производитель</td>
-            <td>Цена</td>
+            <!--<td>Цена</td>-->
             <td></td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of products">
+        <tr *ngFor="let p of products|SearchPipe:search">
             <ng-template [ngIf]="product?.id != p.id" [ngIfElse]="edit">
                 <td>{{p?.name}}</td>
                 <td>{{p?.company}}</td>

@@ -10,6 +10,7 @@
     <None Remove="ClientApp\app\app.module.ts" />
     <None Remove="ClientApp\app\data.service.ts" />
     <None Remove="ClientApp\app\product.ts" />
+    <None Remove="ClientApp\app\search.pipe.ts" />
     <None Remove="ClientApp\main.ts" />
     <None Remove="ClientApp\polyfills.ts" />
   </ItemGroup>
@@ -30,6 +31,7 @@
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\data.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\product.ts" />
+    <TypeScriptCompile Include="ClientApp\app\search.pipe.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
   </ItemGroup>

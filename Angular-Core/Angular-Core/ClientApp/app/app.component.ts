@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import {DataService} from './data.service';
 import { Product } from './product';
+import { SearchPipe } from './search.pipe';
       
 @Component({
     selector: 'app',
