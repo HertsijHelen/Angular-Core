@@ -57,20 +57,27 @@
 
 <!--шаблон для добавления-->
 <ng-template #create>
-    <div class="form-group">
-        <label>Модель</label>
-        <input type="text" [(ngModel)]="product.name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Производитель</label>
-        <input type="text" [(ngModel)]="product.company" class="form-control" />
-    </div>
-    <!--<div class="form-group">
-        <label>Цена</label>
-        <input type="text" [(ngModel)]="product.price" class="form-control" />
-    </div>-->
-    <div>
-        <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
-        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
-    </div>
+    <form [formGroup]="createForm" novalidate>
+        <div class="form-group">
+            <label>Модель</label>
+            <input type="text" [(ngModel)]="product.name" class="form-control" formControlName="name"/>
+            <div class="alert alert-danger"
+                 *ngIf="createForm.controls['name'].invalid && createForm.controls['name'].touched">
+                Не указано имя
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Производитель</label>
+            <input type="text" [(ngModel)]="product.company" class="form-control" formControlName="company"/>
+            <div class="alert alert-danger"
+                 *ngIf="createForm.controls['company'].invalid && createForm.controls['company'].touched">
+                Не указана компания
+            </div>
+        </div>
+        <div>
+            
+            <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />
+            <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+        </div>
+   </form>
 </ng-template>

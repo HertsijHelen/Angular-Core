@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SearchPipe } from './search.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -17,7 +18,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     NgModule({
-        imports: [BrowserModule, FormsModule, HttpClientModule],
+        imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
         declarations: [AppComponent, SearchPipe],
         bootstrap: [AppComponent]
     })

@@ -2,6 +2,7 @@
 import {DataService} from './data.service';
 import { Product } from './product';
 import { SearchPipe } from './search.pipe';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
       
 @Component({
     selector: 'app',
@@ -13,10 +14,19 @@ export class AppComponent implements OnInit{
     products: Product[];                // массив товаров
     tableMode: boolean = true;          // табличный режим
 
+    createForm: FormGroup;
+
     curPage: number;
     pageSize: number;
 
     constructor(private dataService: DataService) {
+
+        this.createForm = new FormGroup({
+
+            "name": new FormControl("SiemensProduct", Validators.required),
+           
+            "company": new FormControl("Siemens", Validators.required)
+        });
         this.curPage = 1;
         this.pageSize = 3; // any page size you want 
 
