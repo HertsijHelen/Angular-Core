@@ -10,11 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
 import { Product } from './product';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 var AppComponent = (function () {
     function AppComponent(dataService) {
         this.dataService = dataService;
         this.product = new Product(); // изменяемый товар
         this.tableMode = true; // табличный режим
+        this.createForm = new FormGroup({
+            "name": new FormControl("SiemensProduct", Validators.required),
+            "company": new FormControl("Siemens", Validators.required)
+        });
         this.curPage = 1;
         this.pageSize = 3; // any page size you want 
     }
