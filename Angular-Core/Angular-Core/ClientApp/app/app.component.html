@@ -1,6 +1,8 @@
 ﻿<h1>Список моделей</h1>
-<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<input type="button" value="Добавить" class="btn btn-danger" (click)="add()" />
 
+
+<div class="HtmlBlock" [innerHtml]="htmlVariable"></div>
 <div class="input-group">
     <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
     <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="search">
@@ -11,7 +13,6 @@
         <tr>
             <td>Модель</td>
             <td>Производитель</td>
-            <!--<td>Цена</td>-->
             <td></td>
         </tr>
     </thead>

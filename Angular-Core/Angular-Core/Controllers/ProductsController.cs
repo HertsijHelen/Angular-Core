@@ -17,17 +17,18 @@ namespace AngularCore.Controllers
             db = context;
         }
 
-        [HttpGet]
-        public IEnumerable<Product> Get()
+        [HttpGet]      
+        public IActionResult Get()
         {
-            return db.Products.ToList();
+            IEnumerable<Product> products = db.Products.ToList();
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public IActionResult Get(int id)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == id);
-            return product;
+            return Ok(product);
         }
 
         [HttpPost]

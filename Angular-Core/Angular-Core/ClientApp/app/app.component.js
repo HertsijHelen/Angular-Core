@@ -11,9 +11,10 @@ import { Component } from '@angular/core';
 import { DataService } from './data.service';
 import { Product } from './product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-var AppComponent = (function () {
+var AppComponent = /** @class */ (function () {
     function AppComponent(dataService) {
         this.dataService = dataService;
+        //htmlVariable: string;
         this.product = new Product(); // изменяемый товар
         this.tableMode = true; // табличный режим
         this.createForm = new FormGroup({
@@ -45,6 +46,9 @@ var AppComponent = (function () {
             this.dataService.updateProduct(this.product)
                 .subscribe(function (data) { return _this.loadProducts(); });
         }
+        //setTimeout(() => {
+        //    this.htmlVariable = '<div>Product successfully added</div>';
+        //},100);
         this.cancel();
     };
     AppComponent.prototype.editProduct = function (p) {
@@ -63,15 +67,15 @@ var AppComponent = (function () {
         return Math.ceil(this.products.length / this.pageSize);
     };
     ;
+    AppComponent = __decorate([
+        Component({
+            selector: 'app',
+            templateUrl: './app.component.html',
+            providers: [DataService]
+        }),
+        __metadata("design:paramtypes", [DataService])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    Component({
-        selector: 'app',
-        templateUrl: './app.component.html',
-        providers: [DataService]
-    }),
-    __metadata("design:paramtypes", [DataService])
-], AppComponent);
 export { AppComponent };
 //# sourceMappingURL=app.component.js.map

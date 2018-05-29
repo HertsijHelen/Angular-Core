@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-var DataService = (function () {
+var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
         this.url = "/api/products";
@@ -26,11 +26,11 @@ var DataService = (function () {
     DataService.prototype.deleteProduct = function (id) {
         return this.http.delete(this.url + '/' + id);
     };
+    DataService = __decorate([
+        Injectable(),
+        __metadata("design:paramtypes", [HttpClient])
+    ], DataService);
     return DataService;
 }());
-DataService = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [HttpClient])
-], DataService);
 export { DataService };
 //# sourceMappingURL=data.service.js.map

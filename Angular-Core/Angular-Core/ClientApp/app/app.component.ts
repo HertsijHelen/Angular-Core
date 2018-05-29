@@ -10,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     providers:[DataService]
 })
 export class AppComponent implements OnInit{ 
+    //htmlVariable: string;
     product: Product = new Product();   // изменяемый товар
     products: Product[];                // массив товаров
     tableMode: boolean = true;          // табличный режим
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.loadProducts();
+        this.loadProducts();  
     }
 
     loadProducts() {
@@ -54,6 +55,11 @@ export class AppComponent implements OnInit{
             this.dataService.updateProduct(this.product)
                 .subscribe(data => this.loadProducts());
         }
+        //setTimeout(() => {
+        //    this.htmlVariable = '<div>Product successfully added</div>';
+        //},100);
+       
+
         this.cancel();
     }
 

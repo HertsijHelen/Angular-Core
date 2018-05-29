@@ -11,17 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SearchPipe } from './search.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        NgModule({
+            imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+            declarations: [AppComponent, SearchPipe],
+            bootstrap: [AppComponent]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    NgModule({
-        imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
-        declarations: [AppComponent, SearchPipe],
-        bootstrap: [AppComponent]
-    })
-], AppModule);
 export { AppModule };
 //# sourceMappingURL=app.module.js.map

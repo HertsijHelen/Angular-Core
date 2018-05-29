@@ -13,7 +13,7 @@ namespace Angular_Core
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = "Server=(LocalDB)\\v11.0;Database=productsdb;Trusted_Connection=True;";
+            string connectionString = "Server=WIN-4BKP1LMJQ8I;Database=productsdb;Trusted_Connection=True;";
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc();
         }

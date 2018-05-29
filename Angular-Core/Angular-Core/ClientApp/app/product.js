@@ -1,4 +1,4 @@
-var Product = (function () {
+var Product = /** @class */ (function () {
     function Product(id, name, company) {
         this.id = id;
         this.name = name;
