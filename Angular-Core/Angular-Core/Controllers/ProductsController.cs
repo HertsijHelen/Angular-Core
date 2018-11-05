@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AngularCore.Models;
+using AngularCore.Repository;
 
 namespace AngularCore.Controllers
 {
@@ -12,6 +13,7 @@ namespace AngularCore.Controllers
     public class ProductsController : Controller
     {
         ApplicationDbContext db;
+        IRepository<Product> _repository;
         public ProductsController(ApplicationDbContext context)
         {
             db = context;

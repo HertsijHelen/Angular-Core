@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using AngularCore.Models;
 using System.Threading.Tasks;
-using AngularCore.Repository;
+
 
 namespace AngularCore.Repository
 {
     public class ProductRepository : IRepository<Product>
     {
         ApplicationDbContext db;
-        IRepository<Product> repository;
 
         /// <summary>
         /// The property of disposed DataContext
