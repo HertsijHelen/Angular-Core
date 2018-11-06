@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using AngularCore.Models;
 using Microsoft.EntityFrameworkCore;
+using AngularCore.Repository;
 
 namespace Angular_Core
 {
@@ -13,8 +14,9 @@ namespace Angular_Core
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = "Server=WIN-4BKP1LMJQ8I;Database=productsdb;Trusted_Connection=True;";
+            string connectionString = "Server=WIN-8RPCSMR6U04;Database=productsdb;Trusted_Connection=True;";
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddTransient<IRepository<Product>,ProductRepository>();
             services.AddMvc();
         }
 
