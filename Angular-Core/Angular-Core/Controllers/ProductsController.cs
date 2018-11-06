@@ -12,37 +12,48 @@ namespace AngularCore.Controllers
     [Route("api/Products")]
     public class ProductsController : Controller
     {
-        ApplicationDbContext db;
-        IRepository<Product> _repository;
-        public ProductsController(ApplicationDbContext context)
+        private IRepository<Product> _rep;
+
+        public ProductsController(IRepository<Product> rep)
         {
-            db = context;
+            _rep = rep;
         }
 
         [HttpGet]      
         public IActionResult Get()
         {
-            IEnumerable<Product> products = db.Products.ToList();
+            IEnumerable<Product> products = _rep.GetAll();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Product product = db.Products.FirstOrDefault(x => x.Id == id);
+            Product product = _rep.GetById(id);
             return Ok(product);
         }
 
         [HttpPost]
         public IActionResult Post([FromBody]Product product)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return Ok(product);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+
+                }
+                else
+                {
+                    _rep.Create(product);
+                    return Ok(product);
+                }
+               
             }
-            return BadRequest(ModelState);
+            catch(Exception ex)
+            {
+                return StatusCode(500,ex);
+            }
         }
 
         [HttpPut("{id}")]
@@ -50,21 +61,23 @@ namespace AngularCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Update(product);
-                db.SaveChanges();
-                return Ok(product);
+             _rep.Update(id, product);
+             return Ok(product);
             }
-            return BadRequest(ModelState);
+            else
+            {
+             return BadRequest(ModelState);
+            }
+           
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Product product = db.Products.FirstOrDefault(x => x.Id == id);
+            Product product = _rep.GetById(id);
             if (product != null)
             {
-                db.Products.Remove(product);
-                db.SaveChanges();
+                _rep.Delete(id);
             }
             return Ok(product);
         }
