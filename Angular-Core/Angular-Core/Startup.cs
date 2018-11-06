@@ -16,7 +16,9 @@ namespace Angular_Core
         {
             string connectionString = "Server=WIN-8RPCSMR6U04;Database=productsdb;Trusted_Connection=True;";
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            //add injection 
             services.AddTransient<IRepository<Product>,ProductRepository>();
+
             services.AddMvc();
         }
 
