@@ -11,6 +11,8 @@ namespace AngularCore.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
             : base(options)
         { }
+        public ApplicationDbContext()
+        { }
 
         public DbSet<Product> Products { get; set; }
     }

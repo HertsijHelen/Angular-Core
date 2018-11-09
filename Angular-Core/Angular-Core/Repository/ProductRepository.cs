@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using AngularCore.Models;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace AngularCore.Repository
 {
     public class ProductRepository : IRepository<Product>
     {
-        ApplicationDbContext db;
 
+        private readonly ApplicationDbContext _db;
+
+        public ProductRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         /// <summary>
         /// The property of disposed DataContext
         /// </summary>
@@ -21,7 +26,7 @@ namespace AngularCore.Repository
         /// <returns></returns>
         public IEnumerable<Product> GetAll()
         {
-            return this.db.Products;
+            return this._db.Products;
 
         }
         /// <summary>
