@@ -35,7 +35,7 @@ namespace AngularCore.Repository
         /// <returns></returns>
         public Product GetById(int id)
         {
-            Product product= db.Products.Find(id);
+            Product product= _db.Products.Find(id);
             return product;
         }
 
@@ -48,8 +48,8 @@ namespace AngularCore.Repository
         {
             try
             {
-                this.db.Products.Add(item);
-                this.db.SaveChanges();
+                this._db.Products.Add(item);
+                this._db.SaveChanges();
                 return item;
             }
             catch
@@ -67,12 +67,12 @@ namespace AngularCore.Repository
         /// <returns></returns>
         public bool Update(int id, Product item)
         {
-            Product p = db.Products.Find(id);
+            Product p = _db.Products.Find(id);
             try
             {
                 p.Name = item.Name;
                 p.Company = item.Company;
-                this.db.SaveChanges();
+                this._db.SaveChanges();
                 return true;
             }
             catch
@@ -89,11 +89,11 @@ namespace AngularCore.Repository
         /// <returns></returns>
         public bool Delete(int id)
         {
-            Product pr = this.db.Products.Find(id);
+            Product pr = this._db.Products.Find(id);
             try
             {
-                this.db.Remove(pr);
-                db.SaveChanges();
+                this._db.Remove(pr);
+                _db.SaveChanges();
                 return true;
             }
             catch
@@ -114,7 +114,7 @@ namespace AngularCore.Repository
             {
                 if (disposing)
                 {
-                    this.db.Dispose();
+                    this._db.Dispose();
                 }
             }
             this.disposed = true;
